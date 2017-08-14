@@ -1,0 +1,6 @@
+Appbundle\Entity\Game:
+    game_{1..10}:
+        name (unique): <name()>
+        description: <paragraph()>
+        price: <randomFloat(2, 5, 50)>
+        stock: <numberBetween(0, 10)>
