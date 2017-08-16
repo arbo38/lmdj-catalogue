@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        {% if(app.request.attributes.get('_route') == 'admin_game_add') %}
+            <button class="btn btm-primary">Ajouter</button>
+        {% else %}
+            <button class="btn btm-primary">Editer</button>
+        {% endif %}
+    {{ form_end(form) }}
+{% endblock %}

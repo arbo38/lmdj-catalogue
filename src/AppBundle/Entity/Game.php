@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Game
@@ -48,6 +49,12 @@ class Game
      * @ORM\Column(name="stock", type="integer")
      */
     private $stock;
+
+    /**
+     * @Gedmo\Slug(fields={"name"})
+     * @ORM\Column(type="string", unique=true)
+     */
+    private $slug;
 
 
     /**
@@ -155,5 +162,23 @@ class Game
     {
         return $this->stock;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * @param mixed $slug
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+    }
+
+
 }
 

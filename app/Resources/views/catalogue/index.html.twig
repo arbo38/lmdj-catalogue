@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+        <div class="row">
+            {% for game in games %}
+                <div class="col-md-3">
+                    <div class="card">
+                        <img src="http://via.placeholder.com/250x150" alt="" class="card-img-top img-fluid">
+                        <div class="card-block card-title">
+                            <h4>{{ game.name }}</h4>
+                            <p>{{ game.description }}</p>
+                            <a class="btn btn-primary" href="{{ path('game_show', { 'slug': game.slug}) }}" >Voir le jeu</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+{% endblock %}
+
+

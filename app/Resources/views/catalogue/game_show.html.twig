@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>{{ game.name }}</h1>
+    <dl class="row">
+        <dt class="col-sm-3">Genre</dt>
+        <dd class="col-sm-9">Jeu de plateau.</dd>
+
+        <dt class="col-sm-3">Prix de la location</dt>
+        <dd class="col-sm-9">{{ game.price }}€ / jour</dd>
+
+        <dt class="col-sm-3">Disponibilite</dt>
+        <dd class="col-sm-9">{{ game.stock }} en stock</dd>
+
+        <dt class="col-sm-3 text-truncate">Description</dt>
+        <dd class="col-sm-9">{{ game.description }}</dd>
+    </dl>
+{% endblock %}

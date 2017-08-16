@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Administrez vos jeux ici <a class="float-right btn btn-primary" href="{{ path('admin_game_add') }}">Ajouter Jeu</a></h1>
+    <div class="row">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nom</th>
+                <th>Stock</th>
+                <th>Prix</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for game in games %}
+                    <tr>
+                        <th scope="row">{{ game.id }}</th>
+                        <td>{{ game.name }}</td>
+                        <td>{{ game.stock }}</td>
+                        <td>{{ game.price }}</td>
+                        <td><a href="{{ path('admin_game_edit', { 'id': game.id}) }}" class="btn btn-sm btn-success"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+
+
