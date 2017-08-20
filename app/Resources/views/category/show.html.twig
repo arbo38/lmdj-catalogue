@@ -1,8 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    <h1>{{ category.name }}</h1>
     <div class="row">
-        {% for game in games %}
+        {% for game in category.games %}
             <div class="col-md-3">
                 <div class="card">
                     <img src="http://via.placeholder.com/250x150" alt="" class="card-img-top img-fluid">
@@ -16,5 +17,3 @@
         {% endfor %}
     </div>
 {% endblock %}
-
-

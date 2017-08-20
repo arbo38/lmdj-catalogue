@@ -4,3 +4,12 @@ Appbundle\Entity\Game:
         description: <paragraph()>
         price: <randomFloat(2, 5, 50)>
         stock: <numberBetween(0, 10)>
+        categories: ['@category*', '@category*']
+
+Appbundle\Entity\Category:
+    category_{1..10}:
+        name (unique): <word()>
+        description: <paragraph()>
+
+
+

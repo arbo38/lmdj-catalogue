@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 
@@ -56,6 +57,15 @@ class Game
      */
     private $slug;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="Category", inversedBy="games", cascade={"persist"})
+     */
+    private $categories;
+
+    public function __construct()
+    {
+        $this->categories = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -177,6 +187,30 @@ class Game
     public function setSlug($slug)
     {
         $this->slug = $slug;
+    }
+
+    public function addCategory(Category $category)
+    {
+        if($this->categories->contains($category)){
+            return;
+        }
+        $this->categories[] = $category;
+    }
+
+    /**
+     * @return ArrayCollection|Category[]
+     */
+    public function getCategories()
+    {
+        return $this->categories;
+    }
+
+    public function removeCategory(Category $category)
+    {
+        if(!$this->categories->contains($category)){
+            return;
+        }
+        $this->categories->removeElement($category);
     }
 
 

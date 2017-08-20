@@ -25,7 +25,6 @@ class GameController extends Controller
      */
     public function showAction(Game $game)
     {
-        // $game = $this->getDoctrine()->getManager()->getRepository('AppBundle:Game')->findOneBy(['slug' => $slug]);
 
         return $this->render('catalogue/game_show.html.twig', [
             'game' => $game

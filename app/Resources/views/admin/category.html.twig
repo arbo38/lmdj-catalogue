@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Les jeux par categorie</h2>
+    <dl class="row">
+        {% for category in categories %}
+                <dt class="col-sm-3">{{ category.name }}</dt>
+                <dd class="col-sm-9">{% for game in category.games %}<button class="btn btn-primary js-remove-game" data-url="{{ path('category_game_remove', {
+                categoryId: category.id,
+                gameId: game.id
+                }) }}">{{ game.name }}</button>{% endfor %}</dd>
+        {% endfor %}
+    </dl>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $(document).ready(function() {
+            $('.js-remove-game').on('click', function(e) {
+                e.preventDefault();
+                var game = $(this);
+                console.log(game);
+                $.ajax({
+                    url: $(game).data('url'),
+                    method: 'DELETE'
+                }).done(function(){
+                    $(game).fadeOut();
+                });
+            });
+        });
+    </script>
+{% endblock %}

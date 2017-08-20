@@ -8,7 +8,7 @@ use Doctrine\DBAL\Schema\Schema;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-class Version20170810160221 extends AbstractMigration
+class Version20170817153352 extends AbstractMigration
 {
     /**
      * @param Schema $schema
@@ -18,7 +18,8 @@ class Version20170810160221 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE game CHANGE price price NUMERIC(10, 2) DEFAULT NULL');
+        $this->addSql('CREATE UNIQUE INDEX UNIQ_64C19C1989D9B62 ON category (slug)');
+        $this->addSql('ALTER TABLE reservation CHANGE pickUpDate pickUpDate DATETIME NOT NULL');
     }
 
     /**
@@ -29,6 +30,7 @@ class Version20170810160221 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE game CHANGE price price NUMERIC(2, 2) DEFAULT NULL');
+        $this->addSql('DROP INDEX UNIQ_64C19C1989D9B62 ON category');
+        $this->addSql('ALTER TABLE reservation CHANGE pickUpDate pickUpDate DATETIME NOT NULL');
     }
 }
